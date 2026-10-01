@@ -9,8 +9,8 @@ Ships five variants:
 | --- | --- | --- |
 | `outrun` | dark | the design palette |
 | `outrun-day` | light | for bright rooms |
-| `outrun-high-contrast` | dark | every ANSI color reaches WCAG AAA |
-| `outrun-day-high-contrast` | light | every ANSI color reaches WCAG AAA |
+| `outrun-high-contrast` | dark | the six normal ANSI colors reach WCAG AAA |
+| `outrun-day-high-contrast` | light | the six normal ANSI colors reach WCAG AAA |
 | `outrun-oled` | pure black | panels stay off on OLED |
 
 ## Install
@@ -69,6 +69,10 @@ require('outrun').setup({
   terminal = true,
 })
 ```
+
+`transparent` applies to editor windows (`Normal`, `NormalNC`, `SignColumn`,
+`FoldColumn`, `EndOfBuffer`). Floats and popups keep their background for
+readability.
 
 ## Health
 

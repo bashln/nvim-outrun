@@ -72,6 +72,10 @@ function M.load(name)
     for i = 0, 15 do
       vim.g['terminal_color_' .. i] = p.term[i + 1]
     end
+  else
+    for i = 0, 15 do
+      vim.g['terminal_color_' .. i] = nil
+    end
   end
 end
 

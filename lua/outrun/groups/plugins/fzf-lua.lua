@@ -7,7 +7,7 @@ return function(p)
     FzfLuaCursor = { fg = p.bg, bg = p.fg },
     FzfLuaCursorLine = { bg = p.selection },
     FzfLuaCursorLineNr = { fg = p.accent, bold = true },
-    FzfLuaSearch = { fg = p.bg, bg = p.search },
+    FzfLuaSearch = { fg = p.fg, bg = p.search },
     FzfLuaFzfMatch = { fg = p.accent, bold = true },
     FzfLuaHeaderBind = { fg = p.accent },
     FzfLuaHeaderText = { fg = p.blue },

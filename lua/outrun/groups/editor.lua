@@ -37,7 +37,7 @@ return function(p, opts)
     PmenuThumb = { bg = p.muted },
 
     Visual = { bg = p.selection },
-    Search = { fg = p.bg, bg = p.search },
+    Search = { fg = p.fg, bg = p.search },
     IncSearch = { fg = p.bg, bg = p.incsearch },
     CurSearch = { link = 'IncSearch' },
     MatchParen = { fg = p.accent, bold = true },
@@ -57,5 +57,7 @@ return function(p, opts)
     Title = { fg = p.accent, bold = true },
     Directory = { fg = p.blue },
     QuickFixLine = { bg = p.selection, bold = true },
+    WinBar = { fg = p.fg, bg = bg },
+    WinBarNC = { fg = nc_fg, bg = bg_nc },
   }
 end

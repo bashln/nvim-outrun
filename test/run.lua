@@ -9,6 +9,28 @@ local slug = 'outrun'
 local here = vim.fn.fnamemodify(debug.getinfo(1, 'S').source:sub(2), ':p:h')
 vim.opt.runtimepath:prepend(vim.fn.fnamemodify(here, ':h'))
 
+local function luminance(color)
+  local r = tonumber(color:sub(2, 3), 16) / 255
+  local g = tonumber(color:sub(4, 5), 16) / 255
+  local b = tonumber(color:sub(6, 7), 16) / 255
+  local function c(v)
+    if v <= 0.04045 then
+      return v / 12.92
+    end
+    return ((v + 0.055) / 1.055) ^ 2.4
+  end
+  return 0.2126 * c(r) + 0.7152 * c(g) + 0.0722 * c(b)
+end
+
+local function contrast(a, b)
+  local x, y = luminance(a), luminance(b)
+  return (math.max(x, y) + 0.05) / (math.min(x, y) + 0.05)
+end
+
+local function hex_of(n)
+  return string.format('#%06x', n)
+end
+
 local expected = {
   [slug] = 'dark',
   [slug .. '-day'] = 'light',
@@ -41,6 +63,16 @@ for name, mode in pairs(expected) do
     local spec = vim.api.nvim_get_hl(0, { name = group, link = false })
     assert(spec and next(spec) ~= nil, name .. ': group not defined: ' .. group)
   end
+  -- Rendered pairs must stay readable (AA).
+  for _, group in ipairs({ 'Search', 'IncSearch', 'PmenuSel' }) do
+    local spec = vim.api.nvim_get_hl(0, { name = group, link = false })
+    assert(spec.fg and spec.bg, name .. ': ' .. group .. ' needs fg and bg')
+    local ratio = contrast(hex_of(spec.fg), hex_of(spec.bg))
+    assert(
+      ratio >= 4.5,
+      name .. ': ' .. group .. ' contrast ' .. string.format('%.2f', ratio) .. ' < 4.5'
+    )
+  end
   count = count + 1
 end
 
@@ -58,12 +90,16 @@ local function hex(color)
   return tonumber(color:sub(2), 16)
 end
 
--- transparent
+-- transparent (editor surface only; floats/popups stay opaque for readability)
 mod.setup({ transparent = true })
 vim.cmd.colorscheme(slug)
 assert(
   vim.api.nvim_get_hl(0, { name = 'Normal' }).bg == nil,
   'transparent: Normal.bg must be unset'
+)
+assert(
+  vim.api.nvim_get_hl(0, { name = 'NormalFloat' }).bg ~= nil,
+  'transparent: floats stay opaque'
 )
 
 -- styles
@@ -103,11 +139,13 @@ assert(
   'palette_overrides accent propagates'
 )
 
--- terminal
-vim.g.terminal_color_0 = nil
+-- terminal on, then off, clears the colors
+mod.setup({ terminal = true })
+vim.cmd.colorscheme(slug)
+assert(vim.g.terminal_color_0 ~= nil, 'terminal=true sets terminal colors')
 mod.setup({ terminal = false })
 vim.cmd.colorscheme(slug)
-assert(vim.g.terminal_color_0 == nil, 'terminal=false skips terminal colors')
+assert(vim.g.terminal_color_0 == nil, 'terminal=false clears terminal colors')
 
 -- dim_inactive
 mod.setup({ dim_inactive = true })
@@ -116,6 +154,10 @@ local palette_default = mod.palette()[slug]
 assert(
   vim.api.nvim_get_hl(0, { name = 'NormalNC' }).fg == hex(palette_default.muted),
   'dim_inactive: NormalNC uses the muted role'
+)
+assert(
+  vim.api.nvim_get_hl(0, { name = 'WinBarNC' }).fg == hex(palette_default.muted),
+  'dim_inactive: WinBarNC uses the muted role'
 )
 
 mod.setup({})

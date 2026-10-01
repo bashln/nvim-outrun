@@ -47,6 +47,8 @@ return {
   'Title',
   'Directory',
   'QuickFixLine',
+  'WinBar',
+  'WinBarNC',
   -- Syntax
   'Comment',
   'Constant',

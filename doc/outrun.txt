@@ -52,7 +52,7 @@ Available names:
 ==============================================================================
 4. OPTIONS                                              *outrun-options*
 
-  transparent           boolean   make editor backgrounds transparent
+  transparent           boolean   transparent editor windows (not floats/popups)
   dim_inactive          boolean   dim inactive windows
   styles                table     per-group bold/italic/underline overrides
   on_highlights         function  hook(hl, palette) before applying
