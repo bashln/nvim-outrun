@@ -1,0 +1,30 @@
+-- bufferline.nvim
+return function(p)
+  return {
+    BufferLineFill = { bg = p.bg_alt },
+    BufferLineBackground = { fg = p.comment, bg = p.bg_alt },
+    BufferLineBuffer = { fg = p.comment, bg = p.bg_alt },
+    BufferLineBufferVisible = { fg = p.fg, bg = p.bg_alt },
+    BufferLineBufferSelected = { fg = p.fg, bg = p.bg, bold = true },
+    BufferLineCloseButton = { fg = p.comment, bg = p.bg_alt },
+    BufferLineCloseButtonVisible = { fg = p.comment, bg = p.bg_alt },
+    BufferLineCloseButtonSelected = { fg = p.error, bg = p.bg },
+    BufferLineModified = { fg = p.warn, bg = p.bg_alt },
+    BufferLineModifiedSelected = { fg = p.warn, bg = p.bg },
+    BufferLineSeparator = { fg = p.bg_alt, bg = p.bg_alt },
+    BufferLineSeparatorVisible = { fg = p.bg_alt, bg = p.bg_alt },
+    BufferLineSeparatorSelected = { fg = p.bg_alt, bg = p.bg },
+    BufferLineIndicatorSelected = { fg = p.accent, bg = p.bg },
+    BufferLineTab = { fg = p.comment, bg = p.bg_alt },
+    BufferLineTabSelected = { fg = p.accent, bg = p.bg },
+    BufferLineTabSeparator = { fg = p.bg_alt, bg = p.bg_alt },
+    BufferLineTabClose = { fg = p.error, bg = p.bg_alt },
+    BufferLinePick = { fg = p.accent, bold = true },
+    BufferLinePickSelected = { fg = p.accent, bold = true },
+    BufferLineDiagnostic = { fg = p.fg },
+    BufferLineError = { fg = p.error },
+    BufferLineWarning = { fg = p.warn },
+    BufferLineInfo = { fg = p.info },
+    BufferLineHint = { fg = p.hint },
+  }
+end

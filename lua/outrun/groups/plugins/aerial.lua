@@ -1,0 +1,33 @@
+-- aerial.nvim
+return function(p)
+  return {
+    AerialNormal = { fg = p.fg, bg = p.bg },
+    AerialGuide = { fg = p.bg_float },
+    AerialLine = { bg = p.selection },
+    AerialLineNC = { bg = p.bg_alt },
+    AerialArrayIcon = { fg = p.yellow },
+    AerialBooleanIcon = { fg = p.number },
+    AerialClassIcon = { fg = p.type_ },
+    AerialConstantIcon = { fg = p.constant },
+    AerialConstructorIcon = { fg = p.type_ },
+    AerialEnumIcon = { fg = p.type_ },
+    AerialEnumMemberIcon = { fg = p.constant },
+    AerialEventIcon = { fg = p.magenta },
+    AerialFieldIcon = { fg = p.property },
+    AerialFileIcon = { fg = p.fg },
+    AerialFunctionIcon = { fg = p.func },
+    AerialInterfaceIcon = { fg = p.type_ },
+    AerialKeyIcon = { fg = p.keyword },
+    AerialMethodIcon = { fg = p.func },
+    AerialModuleIcon = { fg = p.cyan },
+    AerialNamespaceIcon = { fg = p.blue },
+    AerialNullIcon = { fg = p.number },
+    AerialNumberIcon = { fg = p.number },
+    AerialObjectIcon = { fg = p.type_ },
+    AerialOperatorIcon = { fg = p.operator },
+    AerialPropertyIcon = { fg = p.property },
+    AerialStringIcon = { fg = p.string },
+    AerialStructIcon = { fg = p.type_ },
+    AerialVariableIcon = { fg = p.variable },
+  }
+end

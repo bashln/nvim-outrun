@@ -1,0 +1,75 @@
+-- Treesitter captures (:h treesitter-highlight-groups).
+return function(p)
+  return {
+    ['@variable'] = { fg = p.variable },
+    ['@variable.parameter'] = { fg = p.parameter },
+    ['@variable.builtin'] = { fg = p.keyword, italic = true },
+    ['@constant'] = { fg = p.constant },
+    ['@constant.builtin'] = { fg = p.constant },
+    ['@module'] = { fg = p.cyan },
+
+    ['@string'] = { fg = p.string },
+    ['@string.escape'] = { fg = p.orange },
+    ['@string.regex'] = { fg = p.orange },
+    ['@string.special'] = { fg = p.special },
+    ['@character'] = { fg = p.string },
+    ['@number'] = { fg = p.number },
+    ['@boolean'] = { fg = p.number },
+
+    ['@function'] = { fg = p.func },
+    ['@function.builtin'] = { fg = p.func },
+    ['@function.call'] = { fg = p.func },
+    ['@function.macro'] = { fg = p.orange },
+    ['@constructor'] = { fg = p.type_ },
+    ['@method'] = { fg = p.func },
+
+    ['@keyword'] = { fg = p.keyword },
+    ['@keyword.function'] = { fg = p.keyword },
+    ['@keyword.return'] = { fg = p.keyword },
+    ['@keyword.operator'] = { fg = p.operator },
+    ['@keyword.conditional'] = { fg = p.keyword },
+    ['@keyword.repeat'] = { fg = p.keyword },
+    ['@keyword.exception'] = { fg = p.keyword },
+    ['@keyword.import'] = { fg = p.magenta },
+    ['@keyword.type'] = { fg = p.keyword },
+    ['@keyword.directive'] = { fg = p.magenta },
+
+    ['@operator'] = { fg = p.operator },
+    ['@punctuation.delimiter'] = { fg = p.fg },
+    ['@punctuation.bracket'] = { fg = p.fg },
+    ['@punctuation.special'] = { fg = p.special },
+
+    ['@type'] = { fg = p.type_ },
+    ['@type.builtin'] = { fg = p.type_ },
+    ['@type.qualifier'] = { fg = p.keyword },
+    ['@property'] = { fg = p.property },
+    ['@field'] = { fg = p.property },
+    ['@attribute'] = { fg = p.orange },
+    ['@label'] = { fg = p.keyword },
+    ['@namespace'] = { fg = p.blue },
+
+    ['@tag'] = { fg = p.keyword },
+    ['@tag.attribute'] = { fg = p.property },
+    ['@tag.delimiter'] = { fg = p.fg },
+
+    ['@comment'] = { fg = p.comment, italic = true },
+    ['@comment.error'] = { fg = p.bg, bg = p.error, bold = true },
+    ['@comment.warning'] = { fg = p.bg, bg = p.warn, bold = true },
+    ['@comment.todo'] = { fg = p.bg, bg = p.info, bold = true },
+    ['@comment.documentation'] = { fg = p.comment },
+
+    ['@markup.heading'] = { fg = p.accent, bold = true },
+    ['@markup.link'] = { fg = p.blue },
+    ['@markup.raw'] = { fg = p.string },
+    ['@markup.italic'] = { italic = true },
+    ['@markup.bold'] = { bold = true },
+    ['@markup.list'] = { fg = p.keyword },
+    ['@markup.quote'] = { fg = p.comment, italic = true },
+    ['@markup.environment'] = { fg = p.magenta },
+    ['@markup.math'] = { fg = p.special },
+
+    ['@diff.plus'] = { fg = p.green },
+    ['@diff.minus'] = { fg = p.red },
+    ['@diff.delta'] = { fg = p.blue },
+  }
+end

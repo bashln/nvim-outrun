@@ -1,0 +1,30 @@
+-- neo-tree.nvim
+return function(p)
+  return {
+    NeoTreeNormal = { fg = p.fg, bg = p.bg_alt },
+    NeoTreeNormalNC = { fg = p.fg, bg = p.bg_alt },
+    NeoTreeWinSeparator = { fg = p.bg_alt, bg = p.bg_alt },
+    NeoTreeDirectoryName = { fg = p.blue },
+    NeoTreeDirectoryIcon = { fg = p.blue },
+    NeoTreeRootName = { fg = p.accent, bold = true },
+    NeoTreeFileName = { fg = p.fg },
+    NeoTreeFileIcon = { fg = p.fg },
+    NeoTreeFileStats = { fg = p.comment },
+    NeoTreeFileStatsHeader = { fg = p.comment },
+    NeoTreeIndentMarker = { fg = p.bg_float },
+    NeoTreeExpander = { fg = p.comment },
+    NeoTreeSymbolicLinkTarget = { fg = p.cyan },
+    NeoTreeCursorLine = { bg = p.selection },
+    NeoTreeGitAdded = { fg = p.green },
+    NeoTreeGitModified = { fg = p.yellow },
+    NeoTreeGitDeleted = { fg = p.red },
+    NeoTreeGitRenamed = { fg = p.magenta },
+    NeoTreeGitUntracked = { fg = p.cyan },
+    NeoTreeGitIgnored = { fg = p.comment },
+    NeoTreeModified = { fg = p.warn },
+    NeoTreeFloatBorder = { fg = p.muted, bg = p.bg_float },
+    NeoTreeFloatTitle = { fg = p.accent, bg = p.bg_float, bold = true },
+    NeoTreeTitleBar = { fg = p.bg, bg = p.accent, bold = true },
+    NeoTreeMessage = { fg = p.comment },
+  }
+end

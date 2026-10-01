@@ -1,0 +1,63 @@
+*outrun.txt*   Outrun colorscheme for Neovim
+                                                        *outrun*
+
+==============================================================================
+CONTENTS                                              *outrun-contents*
+
+  1. Intro ............................................ |outrun-intro|
+  2. Colorschemes ..................................... |outrun-colorschemes|
+  3. Setup ............................................ |outrun-setup|
+  4. Options .......................................... |outrun-options|
+
+==============================================================================
+1. INTRO                                                *outrun-intro*
+
+Outrun is a Neovim colorscheme generated from the palettes of
+100-themes (https://github.com/bjarneo/100-themes). It ships five variants:
+dark, day, high contrast, day high contrast and oled.
+
+==============================================================================
+2. COLORSCHEMES                                  *outrun-colorschemes*
+
+                                                        *outrun-colorscheme*
+Apply a variant with: >
+
+  :colorscheme outrun
+
+Available names:
+
+  outrun                       dark
+  outrun-day                   light
+  outrun-high-contrast         dark, WCAG AAA
+  outrun-day-high-contrast     light, WCAG AAA
+  outrun-oled                  dark on pure black
+
+==============================================================================
+3. SETUP                                                *outrun-setup*
+
+  require('outrun').setup({
+    transparent = false,
+    dim_inactive = false,
+    styles = {},
+    on_highlights = nil,
+    integrations = {},
+    palette_overrides = {},
+    terminal = true,
+  })
+
+  Then: >
+
+  vim.cmd.colorscheme('outrun')
+
+==============================================================================
+4. OPTIONS                                              *outrun-options*
+
+  transparent           boolean   make editor backgrounds transparent
+  dim_inactive          boolean   dim inactive windows
+  styles                table     per-group bold/italic/underline overrides
+  on_highlights         function  hook(hl, palette) before applying
+  integrations          table     enable/disable a plugin's groups
+  palette_overrides     table     per-colorscheme color overrides
+  terminal              boolean   set |g:terminal_color_0| .. |g:terminal_color_15|
+
+vim:tw=78:ts=8:ft=help:norl:
